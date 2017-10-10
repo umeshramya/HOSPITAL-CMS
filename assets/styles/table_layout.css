@@ -1,0 +1,27 @@
+.Hospital-meta-box-container{
+    padding: 20px;
+
+}
+
+.Hospital-meta-row{
+    border-bottom: 1px solid #e9e9e9;
+    padding-bottom:  20px;
+    padding-top: 20px;
+    display: inline-block;
+    width: 100%;
+}
+.Hospital-meta-th{
+    width: 25%;
+    float: left;
+    font-weight: bold;
+ 
+}
+.Hospital-meta-td{
+    width: 75%;
+    float: left;
+}
+
+input, textarea{
+   max-width: 100%;
+}
+
