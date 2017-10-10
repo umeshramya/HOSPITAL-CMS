@@ -39,7 +39,6 @@ class create_custom_post_type{
         $this->args         = array(
                                 "public"            => true,
                                 'has_archive'       => true,
-
                              );
         
     }
@@ -72,4 +71,48 @@ class create_custom_post_type{
         
         register_post_type( $this->post_type,  $this->args);        
     }
+
+
+    function insert_custom_posts(){
+        $titles= array_reverse(explode(',' , get_option( $this->post_type)));////this array reverse to make first entey to make it latest post
+        // this insert new post from the title array declared in the hospital setting
+        foreach ($titles as $title){
+            $title=trim($title);
+            $post_object= get_page_by_title( $title,  'OBJECT',  $this->post_type);
+            if (null==$post_object){
+                wp_insert_post( array(
+                  'post_name'   =>  $title,
+                  'post_type'   => $this->post_type,
+                  'post_title' => $title,
+                  'post_status' => 'publish'
+                ));
+              }else{
+        
+            }
+
+        }
+
+    }
+
+
+    function read_only_title(){  
+            // adds read only title to post
+        if(get_post_type() == $this->post_type){
+            echo(the_title( "<h1>", "</h1>"));
+        }   
+          
+      }
+
+
+    function __destruct(){
+        // $this->post_type = null;
+
+
+        
+    }
+
+
+
+
+
 }

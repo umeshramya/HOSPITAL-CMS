@@ -2,7 +2,7 @@
 /*
 Plugin Name: Hospital-CMS
 Plugin URI: http://bilagi.org
-Description: This is for patient to book appintment with doctors. This plugin has mobile app to be downloaded from app store. Using this mobile app doctor or his/her secretory can confirm rescedule the patient booked appointment. The data is trasfered is in json format this can inigrated wih any other softwere. There is facilty for chatbox. patient can chat recive instractions.
+Description: This is WordPress plugin for managing website of hospital, like Departments, Facilities, Staff, Management, Appointment booking and show Casing Private insurances and Government Schemes.
 Author: Dr Umesh R Bilagi
 Author URI: http://bilagi.org
 Text Domain: Hospital CMS

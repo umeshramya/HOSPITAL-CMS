@@ -64,7 +64,7 @@ function hospital_custom_setting(){
     
     register_setting( 'Hospital-setting-group', 'departments' );
     register_setting( 'Hospital-setting-group', 'facilities' );
-    register_setting( 'Hospital-setting-group', 'private_insurance' );
+    register_setting( 'Hospital-setting-group', 'private_insurances' );
     register_setting( 'Hospital-setting-group', 'goverment_schemes' );
     register_setting( 'Hospital-setting-group', 'management_hierarchy');
     register_setting( 'Hospital-setting-group', 'faculty_hierarchy');
@@ -166,8 +166,8 @@ function hospital_setting_facilities(){
 }
 
 function hospital_setting_priavte_insurance(){
-    $private_insurance = esc_attr( get_option( 'private_insurance' ) );
-    echo '<input type="text" name="private_insurance" value="' . $private_insurance . '" placeholder="Private insurance" style="width:80%";/>';
+    $private_insurances = esc_attr( get_option( 'private_insurances' ) );
+    echo '<input type="text" name="private_insurances" value="' . $private_insurances . '" placeholder="Private insurance" style="width:80%";/>';
     echo '<p>Enter each insurance by coma separtation </p>';
     echo '<p>Example :- Vidal health care, Medi asst, Star Health</p>';
     echo '<p> Use approprite caps and small letters</p>';
