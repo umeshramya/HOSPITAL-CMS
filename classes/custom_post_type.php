@@ -38,7 +38,12 @@ class create_custom_post_type{
 
         $this->args         = array(
                                 "public"            => true,
-                                'has_archive'       => true,
+                                "has_archive"       => true,
+                                "rewrite"           => true,
+                                "capability_type"   => 'post',
+                                // 'capabilities'      => array( "create_posts"    => 'do_not_allow'),
+                                "map_meta_cap"      => true
+                                
                              );
         
     }
@@ -92,6 +97,7 @@ class create_custom_post_type{
 
         }
 
+
     }
 
 
@@ -102,6 +108,19 @@ class create_custom_post_type{
         }   
           
       }
+
+
+    
+
+    function hide_add_new_button(){
+        // this fucntion hides the Add New button edit.php and also post.php
+        global $pagenow;
+        if (($pagenow == 'post.php'|| $pagenow == 'edit.php' ) && get_post_type() == $this->post_type){
+            echo "<style>";
+            echo ".page-title-action{display: none;}";
+            echo "</style>";
+        }
+    }
 
 
     function __destruct(){

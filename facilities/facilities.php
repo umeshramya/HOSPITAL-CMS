@@ -19,4 +19,5 @@ add_action( "init", array($post_type, 'register_custom_post_type' ));
 
 add_action('init', array($post_type, 'insert_custom_posts'));
 add_action("edit_form_after_title", array($post_type, "read_only_title"));
+add_action('admin_head', array($post_type, 'hide_add_new_button'));
 unset($post_type);
