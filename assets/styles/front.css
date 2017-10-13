@@ -1,0 +1,25 @@
+/*
+classes and descriptions
+1. .archive-posts-wraper-hospital -- for archives below main with for full 100% width without sidebar
+2. .single-post-wraper-hospital-- for single post with side bar active
+3. .title-hospital-wraper-- for title wraper
+4. .hospital-author-meta  -- authorprofile on author-profile.php
+5. .hospital-contact-form-- author contact form author-profile.php
+
+*/
+
+
+
+
+.hospital-archive-post{
+  width:300px;
+  padding:4px 4px 4px 4px;
+  border:1px solid black;
+  float:left;
+  height: 360px;
+  border: 1px solid black;
+  margin: 2px;
+  box-sizing: border-box;
+  overflow: hidden;
+  border-radius: 2%;
+}
