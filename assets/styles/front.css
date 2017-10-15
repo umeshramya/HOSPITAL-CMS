@@ -1,17 +1,66 @@
 /*
 classes and descriptions
-1. .archive-posts-wraper-hospital -- for archives below main with for full 100% width without sidebar
-2. .single-post-wraper-hospital-- for single post with side bar active
-3. .title-hospital-wraper-- for title wraper
-4. .hospital-author-meta  -- authorprofile on author-profile.php
-5. .hospital-contact-form-- author contact form author-profile.php
+1. .archive-posts-wraper-medsites -- for archives below main with for full 100% width without sidebar
+2. .single-post-wraper-medsites-- for single post with side bar active
+3. .title-medsites-wraper-- for title wraper
+4. .medsites-author-meta  -- authorprofile on author-profile.php
+5. .medsites-contact-form-- author contact form author-profile.php
 
 */
+@media only screen
+and (max-width : 320px) {
+  .medsites-outer-wraper {
+    width: 304px;
+    margin:0 auto;
+   
+  }
+  
+
+}
+
+@media only screen
+and (min-width : 321px)
+and (max-width : 620px) {
+  .medsites-outer-wraper {
+    width: 304px;
+    margin:0 auto;
+   
+  }
+  
+
+}
+
+@media only screen
+and (min-width : 621px)
+and (max-width : 920px) {
+  .medsites-outer-wraper {
+    width: 608px;
+    margin:0 auto;
+   
+  }
+  
+
+}
+
+
+@media only screen
+and (min-width : 921px)
+ {
+  .medsites-outer-wraper {
+    width: 912px;
+    margin:0 auto;
+   
+  }
+  
+
+}
 
 
 
 
-.hospital-archive-post{
+
+
+.medsites-archive-post{
   width:300px;
   padding:4px 4px 4px 4px;
   border:1px solid black;
@@ -19,7 +68,7 @@ classes and descriptions
   height: 360px;
   border: 1px solid black;
   margin: 2px;
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
   overflow: hidden;
   border-radius: 2%;
 }

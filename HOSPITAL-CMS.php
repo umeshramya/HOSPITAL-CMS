@@ -97,19 +97,20 @@ function Hospital_load_template($original_template){
             }
 
 
-        }elseif (is_single()){
-            // check if post is single
-            if(file_exists(get_stylesheet_directory(). "/single-" . $cur_post_type ."\.php")){
-                // look for concerned single post type inside theme directory
-                // return theme template if true
-                return get_stylesheet_directory() . "/single-" . $cur_post_type ."\.php";              
-            }else{
-                // else use plugin template
-                return plugin_dir_path(__FILE__) ."templates/single.php";
-            }
-        }//end of ?post_type if
+        }
+        
+        elseif (is_single()){
+            if (file_exists(get_stylesheet_directory(). "/single-medsites.php")){
+                return get_stylesheet_directory(). "/single-medsites.php";//this file has to created by to return custmized single.php as per as themes
 
-    }else{
+            }else{
+                return  get_stylesheet_directory(). "/single.php";
+
+            }
+           
+        }//end of ?post_type if
+    }
+    else{
         //if not the case fall back on the original tamplate with which wordpress had decided
         return $original_template; //if no match found then it fall back on $original_template
     }
