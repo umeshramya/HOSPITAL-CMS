@@ -1,11 +1,13 @@
 /*
-classes and descriptions
-1. .archive-posts-wraper-medsites -- for archives below main with for full 100% width without sidebar
-2. .single-post-wraper-medsites-- for single post with side bar active
-3. .title-medsites-wraper-- for title wraper
-4. .medsites-author-meta  -- authorprofile on author-profile.php
-5. .medsites-contact-form-- author contact form author-profile.php
+@package HOSPITAL-CMS
 
+This is plugin front stylesheet defult to load if theme does not have file in
+/medsites/styles/front.css
+
+classes and descriptions
+1. .medsites-archive-post This for box produced in archive of post and authors
+
+2.  .medsites-outer-wraper This is outer wraper including title inside wih media query
 */
 @media only screen
 and (max-width : 320px) {

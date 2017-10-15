@@ -7,6 +7,26 @@ Author: Dr Umesh R Bilagi
 Author URI: http://bilagi.org
 Text Domain: Hospital CMS
 
+
+
+
+we need to creat the folder by name medsites inside theme directory in case we need to modify the defult presentation of template on front end.
+
+1. all archive custom post i.e departments, facilities, private_insurences and goverment_schemes create file archive-medsites.php 
+2. to handle only perperticular custom post create for example :-archive-departments.php
+
+simliarly for single post
+1. all sinlge custom post i.e departments, facilities, private_insurences and goverment_schemes create file single-medsites.php 
+2. to handle only perperticular custom post create for example :-single-departments.php.
+
+
+to modify css 
+create a file inside styles/front.css
+
+
+
+
+
 */ 
 
 //to prevent unauhorized axis
@@ -65,7 +85,20 @@ function hospital_enqueue_front(){
         This enques scripts and styles for front
     */ 
     wp_enqueue_style( "plugin_table_layout_style", plugins_url( "assets/styles/table_layout.css", __FILE__ ));
-    wp_enqueue_style( "plugin_front_style", plugins_url( "assets/styles/front.css", __FILE__ ));
+    
+
+    // as few themes need defferent style they have to put be  in theme folder only
+    // echo("gfgfggfgfffffffffffffffffffffffffffffffffffffffffffffffff  ".get_template_directory_uri());
+    if(file_exists(get_stylesheet_directory(). "/medsites/styles/front.css")){
+        wp_enqueue_style( "theme_front_style", get_stylesheet_directory_uri()."/medsites/styles/front.css" );
+    }else{
+        // if theme does not have plugin styles then it will use defult plugin styles
+        wp_enqueue_style( "plugin_front_style", plugins_url( "assets/styles/front.css", __FILE__ ));
+
+    }
+  
+
+
     // /var/www/html/wordpress/wp-content/plugins/HOSPITAL-CMS/assets/styles/front.css
     wp_enqueue_style( 'jquery_ui_style', "https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css");
 
@@ -76,7 +109,9 @@ function hospital_enqueue_front(){
 // loading template by checking the template  for  each post_type
 // =====================================================
 add_action( "template_include", "Hospital_load_template");
-function Hospital_load_template($original_template){
+function Hospital_load_template($original_template){   
+
+
     $cur_post_type = get_post_type();//setting curpost type
 
     //checking for current post type i.e. departments, facilities, private_insurances and goverment_schemes
@@ -86,10 +121,14 @@ function Hospital_load_template($original_template){
             // find out is it archive or is_search
         if (is_archive() || is_search()){
 
-            // looking for concerned template inside theme
-            if (file_exists(get_stylesheet_directory()."/archive-" . $cur_post_type ."\.php")){ 
+            // looking for concerned template inside as per the custom post
+            if (file_exists(get_stylesheet_directory()."/medsites/archive-" . $cur_post_type ."\.php")){ 
                 //return if theme template  if true
-                return get_stylesheet_directory() ."/archive-" . $cur_post_type ."\.php";
+                return get_stylesheet_directory() ."/medsites/archive-" . $cur_post_type ."\.php";
+
+            }elseif(file_exists(get_stylesheet_directory()."/medsites/archive-medsites.php")){
+                // check for themplate for all cpt of hospital
+                return get_stylesheet_directory()."/medsites/archive-medsites.php";               
             }else{
                 // if not use plugin template
                 return plugin_dir_path(__FILE__) ."templates/archive.php";
@@ -97,12 +136,15 @@ function Hospital_load_template($original_template){
             }
 
 
-        }
-        
-        elseif (is_single()){
-            if (file_exists(get_stylesheet_directory(). "/single-medsites.php")){
-                return get_stylesheet_directory(). "/single-medsites.php";//this file has to created by to return custmized single.php as per as themes
+        }elseif (is_single()){
+            
+            
+            if (file_exists(get_stylesheet_directory(). "/medsites/single-".$cur_post_type.".php")){
 
+                return get_stylesheet_directory(). "/medsites/single-".$cur_post_type.".php";
+
+            }elseif (file_exists(get_stylesheet_directory(). "/medsites/single-medsites.php")){
+                return get_stylesheet_directory(). "/medsites/single-medsites.php";//this file has to created by to return custmized single.php as per as themes
             }else{
                 return  get_stylesheet_directory(). "/single.php";
 
